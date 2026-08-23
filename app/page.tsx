@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const BOOKING_URL = "https://calendar.app.google/nNFRYafpCPvkKa7M7";
+const BOOKING_EMBED_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ei810I8DVskRhcmNk5bcrox4oE6x97_X7vq1QTO8oNvutH1_4LVoWN7D3-eU2T8fnV4-TZ6rj";
 
 function Brand({ light = false }: { light?: boolean }) {
   return (
@@ -102,7 +103,7 @@ function WeburnCase() {
   return (
     <section className="weburn-case section-shell" aria-labelledby="weburn-title">
       <div className="case-top">
-        <div><span className="kicker">CASE PRINCIPAL</span><div className="weburn-mark"><Image src="/weburn.png" alt="Weburn" width={280} height={120} /></div></div>
+        <div><div className="weburn-mark"><Image src="/weburn.png" alt="Weburn" width={280} height={120} /></div></div>
         <p id="weburn-title">Automação e IA aplicadas ao processo comercial para trabalhar leads em escala e transformar atendimento em vendas.</p>
       </div>
       <div className="metrics">
@@ -131,17 +132,30 @@ function Cases() {
   );
 }
 
-const transforms = [["Processo manual", "Automatizado"], ["Lead esquecido", "Follow-up"], ["Atendimento lento", "IA"], ["Dados espalhados", "Inteligência"]];
+const transforms = [
+  ["Processos automatizados", "+ eficiência"],
+  ["Atendimento 24/7", "+ conversão"],
+  ["Dados organizados", "+ inteligência"],
+];
 
 function Problems() {
   return (
     <section className="problems">
       <div className="section-shell">
         <div className="section-heading"><div><span className="kicker">TRANSFORMAÇÃO</span><h2>Onde existe gargalo,<br />existe oportunidade de <mark>automatizar.</mark></h2></div></div>
-        <div className="transform-list">
-          {transforms.map(([before, after]) => <div className="transform-row" key={before}><span>{before}</span><div className="transform-path"><i /><b>+</b></div><strong>{after}</strong></div>)}
+        <div className="convergence" aria-label="Processos automatizados, atendimento 24 horas e dados organizados convergem em mais eficiência, conversão e inteligência">
+          <div className="convergence-items">
+            {transforms.map(([source, result], index) => (
+              <div className="convergence-item" key={source}>
+                <div className="convergence-copy"><strong>{source}</strong><span>{result}</span></div>
+                <svg className={`convergence-line convergence-line--${index + 1}`} viewBox="0 0 360 80" preserveAspectRatio="none" aria-hidden="true">
+                  <path pathLength="1" d={index === 0 ? "M 0 40 C 185 40, 205 70, 360 70" : index === 1 ? "M 0 40 L 360 40" : "M 0 40 C 185 40, 205 10, 360 10"} />
+                </svg>
+              </div>
+            ))}
+          </div>
+          <div className="convergence-core" aria-hidden="true">+</div>
         </div>
-        <div className="pain-strip">{["Leads perdidos", "Atendimento sobrecarregado", "CRM desorganizado", "Sistemas desconectados"].map(x => <span key={x}><i />{x}</span>)}</div>
       </div>
     </section>
   );
@@ -174,7 +188,7 @@ function Booking() {
       <div className="booking-intro section-shell">
         <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p>
       </div>
-      <div className="calendar-wrap section-shell"><div className="calendar-head"><div><span>Escolha um horário</span><small>Conversa inicial · online</small></div><a href={BOOKING_URL} target="_blank" rel="noreferrer">Abrir agenda <Arrow /></a></div><iframe src={BOOKING_URL} title="Agenda de reuniões ATM+" loading="lazy" /></div>
+      <div className="calendar-wrap section-shell"><div className="calendar-head"><div><span>Escolha um horário</span><small>Conversa inicial · online</small></div><a href={BOOKING_URL} target="_blank" rel="noreferrer">Abrir agenda <Arrow /></a></div><iframe src={BOOKING_EMBED_URL} title="Agenda de reuniões ATM+" loading="lazy" /></div>
     </section>
   );
 }
