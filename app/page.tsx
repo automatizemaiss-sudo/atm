@@ -25,31 +25,15 @@ function Header() {
   );
 }
 
-function HeroFlow() {
-  return (
-    <div className="flow-visual" aria-label="Leads, atendimento, dados, processos e CRM convergem em eficiência, conversão e escala">
-      <div className="flow-inputs">
-        {["Leads", "Atendimento", "Dados", "Processos", "CRM"].map((item, i) => (
-          <span key={item} style={{ "--i": i } as React.CSSProperties}>{item}</span>
-        ))}
-      </div>
-      <div className="flow-core" aria-hidden="true">+</div>
-      <div className="flow-results"><span>eficiência</span><span>conversão</span><span>escala</span></div>
-    </div>
-  );
-}
-
 function Hero() {
   return (
     <main id="inicio" className="hero section-shell">
       <div className="hero-copy">
         <div className="eyebrow"><span /> Tecnologia aplicada à operação</div>
-        <h1>Automação e IA para <mark>vender mais</mark>, atender melhor e escalar sua operação.</h1>
+        <h1>Automação e IA para<br /><mark>vender mais</mark>, atender melhor<br />e escalar sua operação.</h1>
         <p>Identificamos gargalos e construímos soluções sob medida para comercial, atendimento e operação.</p>
         <a className="button button--hero" href="#agendamento">Agendar uma reunião <Arrow /></a>
-        <div className="hero-proof"><strong>+21 mil</strong> leads processados <i /> <strong>R$199 mil</strong> em vendas geradas em uma operação</div>
       </div>
-      <HeroFlow />
     </main>
   );
 }
