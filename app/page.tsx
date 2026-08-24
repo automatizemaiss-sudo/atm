@@ -1,6 +1,5 @@
 import Image from "next/image";
-
-const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ei810I8DVskRhcmNk5bcrox4oE6x97_X7vq1QTO8oNvutH1_4LVoWN7D3-eU2T8fnV4-TZ6rj?gv=true";
+import { BookingButton, BookingModal } from "./BookingModal";
 
 function Brand({ light = false }: { light?: boolean }) {
   return (
@@ -19,7 +18,7 @@ function Header() {
   return (
     <header className="header">
       <a href="#inicio" className="logo-link" aria-label="ATM+ — início"><Brand /></a>
-      <a className="button button--small" href={BOOKING_URL} target="_blank" rel="noreferrer">Agendar reunião <Arrow /></a>
+      <BookingButton className="button button--small">Agendar reunião <Arrow /></BookingButton>
     </header>
   );
 }
@@ -31,7 +30,7 @@ function Hero() {
         <div className="eyebrow"><span /> Tecnologia aplicada à operação</div>
         <h1>Automação e IA para<br /><mark>vender mais</mark>, atender melhor<br />e escalar sua operação.</h1>
         <p>Identificamos gargalos e construímos soluções sob medida para comercial, atendimento e operação.</p>
-        <a className="button button--hero" href={BOOKING_URL} target="_blank" rel="noreferrer">Agendar uma reunião <Arrow /></a>
+        <BookingButton className="button button--hero">Agendar uma reunião <Arrow /></BookingButton>
       </div>
     </main>
   );
@@ -159,7 +158,7 @@ function Founder() {
   return (
     <section className="founder section-shell">
       <div className="founder-photo"><Image src="/matheus-donha-founder.png" alt="Matheus Donha, founder da ATM+" width={240} height={240} /></div>
-      <div className="founder-copy"><span className="kicker">QUEM ESTÁ POR TRÁS</span><h3>Matheus Donha</h3><p className="role">Founder ATM+</p><p>Especialista em processos e automações para vendas.</p><a className="text-link" href={BOOKING_URL} target="_blank" rel="noreferrer">Vamos conversar <Arrow /></a></div>
+      <div className="founder-copy"><span className="kicker">QUEM ESTÁ POR TRÁS</span><h3>Matheus Donha</h3><p className="role">Founder ATM+</p><p>Especialista em processos e automações para vendas.</p><BookingButton className="text-link">Vamos conversar <Arrow /></BookingButton></div>
     </section>
   );
 }
@@ -168,7 +167,7 @@ function Booking() {
   return (
     <section className="booking" id="agendamento">
       <div className="booking-intro section-shell">
-        <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p><a className="button booking-button" href={BOOKING_URL} target="_blank" rel="noreferrer">Agendar uma reunião <Arrow /></a>
+        <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p><BookingButton className="button booking-button">Agendar uma reunião <Arrow /></BookingButton>
       </div>
     </section>
   );
@@ -179,5 +178,5 @@ function Footer() {
 }
 
 export default function Home() {
-  return <><Header /><Hero /><LogoCloud /><Services /><WeburnCase /><Cases /><Problems /><Process /><Founder /><Booking /><Footer /></>;
+  return <><Header /><Hero /><LogoCloud /><Services /><WeburnCase /><Cases /><Problems /><Process /><Founder /><Booking /><Footer /><BookingModal /></>;
 }
