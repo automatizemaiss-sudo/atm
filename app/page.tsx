@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-const BOOKING_URL = "https://calendar.app.google/nNFRYafpCPvkKa7M7";
-const BOOKING_EMBED_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ei810I8DVskRhcmNk5bcrox4oE6x97_X7vq1QTO8oNvutH1_4LVoWN7D3-eU2T8fnV4-TZ6rj";
+const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ei810I8DVskRhcmNk5bcrox4oE6x97_X7vq1QTO8oNvutH1_4LVoWN7D3-eU2T8fnV4-TZ6rj?gv=true";
 
 function Brand({ light = false }: { light?: boolean }) {
   return (
@@ -20,7 +19,7 @@ function Header() {
   return (
     <header className="header">
       <a href="#inicio" className="logo-link" aria-label="ATM+ — início"><Brand /></a>
-      <a className="button button--small" href="#agendamento">Agendar reunião <Arrow /></a>
+      <a className="button button--small" href={BOOKING_URL} target="_blank" rel="noreferrer">Agendar reunião <Arrow /></a>
     </header>
   );
 }
@@ -32,7 +31,7 @@ function Hero() {
         <div className="eyebrow"><span /> Tecnologia aplicada à operação</div>
         <h1>Automação e IA para<br /><mark>vender mais</mark>, atender melhor<br />e escalar sua operação.</h1>
         <p>Identificamos gargalos e construímos soluções sob medida para comercial, atendimento e operação.</p>
-        <a className="button button--hero" href="#agendamento">Agendar uma reunião <Arrow /></a>
+        <a className="button button--hero" href={BOOKING_URL} target="_blank" rel="noreferrer">Agendar uma reunião <Arrow /></a>
       </div>
     </main>
   );
@@ -58,12 +57,11 @@ function LogoCloud() {
 
 const services = [
   ["01", "Atendimento com IA", "Conversa, qualifica, responde e direciona leads."],
-  ["02", "Follow-ups automáticos", "Recupere oportunidades antes que sejam esquecidas."],
-  ["03", "CRM e funil comercial", "Leads organizados, distribuídos e acompanhados."],
-  ["04", "Integração de sistemas", "Faça suas ferramentas trabalharem juntas."],
-  ["05", "Automação operacional", "Elimine tarefas repetitivas e processos manuais."],
-  ["06", "Dashboards e dados", "Transforme informações em decisão."],
-  ["07", "Soluções sob medida", "Automações específicas para cada gargalo."],
+  ["02", "CRM e funil comercial", "Leads organizados, distribuídos e acompanhados."],
+  ["03", "Integração de sistemas", "Faça suas ferramentas trabalharem juntas."],
+  ["04", "Automação operacional", "Elimine tarefas repetitivas e processos manuais."],
+  ["05", "Dashboards e dados", "Transforme informações em decisão."],
+  ["06", "Soluções sob medida", "Automações específicas para cada gargalo."],
 ];
 
 function Services() {
@@ -72,8 +70,8 @@ function Services() {
       <div className="section-shell">
         <div className="section-heading section-heading--light"><div><span className="kicker">POSSIBILIDADES</span><h2>O que podemos<br /><mark>automatizar?</mark></h2></div><p>Onde houver repetição, demora ou perda de informação, existe espaço para ganhar eficiência.</p></div>
         <div className="services-grid">
-          {services.map(([num, title, text], i) => (
-            <article className={`service-card ${i === 6 ? "service-card--wide" : ""}`} key={title}>
+          {services.map(([num, title, text]) => (
+            <article className="service-card" key={title}>
               <span className="service-num">{num}</span><div className="service-icon" aria-hidden="true"><i /><b>+</b></div><h3>{title}</h3><p>{text}</p>
             </article>
           ))}
@@ -160,8 +158,8 @@ function Process() {
 function Founder() {
   return (
     <section className="founder section-shell">
-      <div className="founder-photo"><Image src="/matheus-donha.png" alt="Matheus Donha, founder da ATM+" width={720} height={900} priority /></div>
-      <div className="founder-copy"><span className="kicker">QUEM ESTÁ POR TRÁS</span><h2>Estratégia, processos<br />e tecnologia <mark>juntos.</mark></h2><div className="founder-line" /><h3>Matheus Donha</h3><p className="role">Founder ATM+</p><p>Especialista em processos e automações para vendas.</p><a className="text-link" href="#agendamento">Vamos conversar <Arrow /></a></div>
+      <div className="founder-photo"><Image src="/matheus-donha-founder.png" alt="Matheus Donha, founder da ATM+" width={240} height={240} /></div>
+      <div className="founder-copy"><span className="kicker">QUEM ESTÁ POR TRÁS</span><h3>Matheus Donha</h3><p className="role">Founder ATM+</p><p>Especialista em processos e automações para vendas.</p><a className="text-link" href={BOOKING_URL} target="_blank" rel="noreferrer">Vamos conversar <Arrow /></a></div>
     </section>
   );
 }
@@ -170,9 +168,8 @@ function Booking() {
   return (
     <section className="booking" id="agendamento">
       <div className="booking-intro section-shell">
-        <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p>
+        <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p><a className="button booking-button" href={BOOKING_URL} target="_blank" rel="noreferrer">Agendar uma reunião <Arrow /></a>
       </div>
-      <div className="calendar-wrap section-shell"><div className="calendar-head"><div><span>Escolha um horário</span><small>Conversa inicial · online</small></div><a href={BOOKING_URL} target="_blank" rel="noreferrer">Abrir agenda <Arrow /></a></div><iframe src={BOOKING_EMBED_URL} title="Agenda de reuniões ATM+" loading="lazy" /></div>
     </section>
   );
 }
