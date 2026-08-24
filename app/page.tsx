@@ -18,7 +18,7 @@ function Header() {
   return (
     <header className="header">
       <a href="#inicio" className="logo-link" aria-label="ATM+ — início"><Brand /></a>
-      <BookingButton className="button button--small">Agendar reunião <Arrow /></BookingButton>
+      <a className="button button--small" href="#agendamento">Agendar reunião <Arrow /></a>
     </header>
   );
 }
@@ -30,7 +30,7 @@ function Hero() {
         <div className="eyebrow"><span /> Tecnologia aplicada à operação</div>
         <h1>Automação e IA para<br /><mark>vender mais</mark>, atender melhor<br />e escalar sua operação.</h1>
         <p>Identificamos gargalos e construímos soluções sob medida para comercial, atendimento e operação.</p>
-        <BookingButton className="button button--hero">Agendar uma reunião <Arrow /></BookingButton>
+        <a className="button button--hero" href="#agendamento">Agendar uma reunião <Arrow /></a>
       </div>
     </main>
   );
@@ -158,7 +158,7 @@ function Founder() {
   return (
     <section className="founder section-shell">
       <div className="founder-photo"><Image src="/matheus-donha-founder.png" alt="Matheus Donha, founder da ATM+" width={240} height={240} /></div>
-      <div className="founder-copy"><span className="kicker">QUEM ESTÁ POR TRÁS</span><h3>Matheus Donha</h3><p className="role">Founder ATM+</p><p>Especialista em processos e automações para vendas.</p><BookingButton className="text-link">Vamos conversar <Arrow /></BookingButton></div>
+      <div className="founder-copy"><span className="kicker">QUEM ESTÁ POR TRÁS</span><h3>Matheus Donha</h3><p className="role">Founder ATM+</p><p>Especialista em processos e automações para vendas.</p><a className="text-link" href="#agendamento">Vamos conversar <Arrow /></a></div>
     </section>
   );
 }
@@ -167,7 +167,7 @@ function Booking() {
   return (
     <section className="booking" id="agendamento">
       <div className="booking-intro section-shell">
-        <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p><BookingButton className="button booking-button">Agendar uma reunião <Arrow /></BookingButton>
+        <span className="kicker">PRÓXIMO PASSO</span><h2>Identifique o próximo<br />gargalo da sua <mark>operação.</mark></h2><p>Em uma conversa, entendemos seu cenário e avaliamos onde automação e IA podem gerar mais impacto.</p><BookingButton className="button booking-button">Ver horários disponíveis <Arrow /></BookingButton>
       </div>
     </section>
   );
