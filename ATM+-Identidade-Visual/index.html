@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guia de identidade visual da ATM+ — marca, cores, tipografia e aplicações.">
+  <title>ATM+ — Identidade visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00E05A;
+      --deep: #004D2B;
+      --ink: #0D0D0D;
+      --graphite: #2A2A2A;
+      --off: #F6F6F6;
+      --white: #FFFFFF;
+      --muted: #6F716F;
+      --line: #D9DDD9;
+      --max: 1240px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; color: var(--ink); background: var(--off); font-family: "Sora", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .topbar { position: sticky; z-index: 20; top: 12px; height: 68px; margin-top: 12px; border: 1px solid rgba(13,13,13,.08); border-radius: 18px; background: rgba(246,246,246,.88); box-shadow: 0 12px 40px rgba(0,0,0,.05); backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between; padding: 0 22px; }
+    .nav { display: flex; gap: 25px; color: var(--muted); font-size: 11px; font-weight: 600; }
+    .nav a:hover { color: var(--ink); }
+    .logo { display: inline-flex; align-items: center; gap: 5px; font-size: 34px; line-height: 1; letter-spacing: -3.5px; }
+    .logo strong { font-weight: 800; }
+    .logo em { color: var(--green); font-size: 38px; font-style: normal; font-weight: 700; }
+    .logo-lines { position: relative; width: 30px; height: 25px; margin-right: 1px; }
+    .logo-lines i { position: absolute; left: 0; width: 27px; height: 2px; border-radius: 2px; background: currentColor; }
+    .logo-lines i::before { content: ""; position: absolute; left: -2px; top: -4px; width: 6px; height: 6px; border: 2px solid currentColor; border-radius: 50%; background: var(--off); }
+    .logo-lines i:nth-child(1) { top: 3px; transform: rotate(13deg); }
+    .logo-lines i:nth-child(2) { top: 12px; }
+    .logo-lines i:nth-child(3) { top: 21px; color: var(--green); transform: rotate(-13deg); }
+    .hero { min-height: 690px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 80px; padding-block: 92px; }
+    .eyebrow, .section-label { color: var(--deep); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--green); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin: 23px 0 27px; max-width: 890px; font-size: clamp(52px, 6.5vw, 92px); line-height: .96; letter-spacing: -.065em; }
+    h1 span, h2 span { color: var(--green); }
+    .lead { max-width: 710px; color: #595c59; font-size: 17px; line-height: 1.75; }
+    .meta { display: flex; gap: 25px; margin-top: 50px; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .meta span { display: flex; align-items: center; gap: 8px; }
+    .meta i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+    .hero-mark { position: relative; aspect-ratio: 1; border-radius: 32px; overflow: hidden; background: var(--ink); box-shadow: 0 35px 90px rgba(0,77,43,.2); display: grid; place-items: center; }
+    .hero-mark::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(0,224,90,.25), transparent 33%), repeating-linear-gradient(0deg, transparent 0 47px, rgba(255,255,255,.035) 48px), repeating-linear-gradient(90deg, transparent 0 47px, rgba(255,255,255,.035) 48px); }
+    .plus { position: relative; z-index: 1; width: 42%; aspect-ratio: 1; border-radius: 28%; display: grid; place-items: center; background: var(--green); color: var(--ink); font-size: clamp(86px, 12vw, 150px); font-weight: 500; line-height: 1; box-shadow: 0 0 65px rgba(0,224,90,.35); }
+    section { padding-block: 105px; }
+    .section-head { display: grid; grid-template-columns: 1fr .65fr; align-items: end; gap: 60px; margin-bottom: 54px; }
+    h2 { margin: 14px 0 0; font-size: clamp(38px, 4.6vw, 62px); line-height: 1.03; letter-spacing: -.055em; }
+    .section-head > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .dark { color: var(--white); background: var(--ink); }
+    .dark .section-label { color: var(--green); }
+    .dark .section-head > p { color: #9ba09c; }
+    .logo-stage { display: grid; grid-template-columns: 1.3fr .7fr; min-height: 410px; border: 1px solid #292d2a; border-radius: 24px; overflow: hidden; }
+    .logo-main { display: grid; place-items: center; background: #151816; }
+    .logo-main .logo { font-size: clamp(58px, 8vw, 108px); letter-spacing: -.09em; color: white; transform: scale(1.08); }
+    .logo-main .logo em { font-size: 1.12em; }
+    .logo-main .logo-lines { width: 79px; height: 62px; margin-right: 8px; }
+    .logo-main .logo-lines i { width: 70px; height: 4px; }
+    .logo-main .logo-lines i::before { width: 15px; height: 15px; top: -7px; left: -3px; border-width: 3px; background: #151816; }
+    .logo-main .logo-lines i:nth-child(1) { top: 7px; }
+    .logo-main .logo-lines i:nth-child(2) { top: 29px; }
+    .logo-main .logo-lines i:nth-child(3) { top: 51px; }
+    .logo-side { display: grid; grid-template-rows: 1fr 1fr; }
+    .logo-side > div { display: grid; place-items: center; }
+    .logo-side > div:first-child { color: var(--ink); background: var(--green); }
+    .logo-side > div:last-child { color: var(--ink); background: var(--white); }
+    .logo-side .logo-lines i::before { background: inherit; }
+    .logo-side .logo-lines { transform: scale(2); }
+    .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+    .rule { min-height: 130px; padding: 22px; border: 1px solid #292d2a; border-radius: 16px; background: #151816; }
+    .rule b { display: block; margin-bottom: 12px; color: var(--green); font-size: 11px; letter-spacing: .1em; }
+    .rule p { margin: 0; color: #a5aaa6; font-size: 12px; line-height: 1.65; }
+    .palette { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 230px 180px; gap: 12px; }
+    .swatch { position: relative; border: 1px solid rgba(13,13,13,.09); border-radius: 20px; overflow: hidden; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .swatch strong { font-size: 18px; letter-spacing: -.03em; }
+    .swatch code { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: .08em; }
+    .swatch--green { grid-row: span 2; color: var(--ink); background: var(--green); }
+    .swatch--green::after { content: "+"; position: absolute; right: -23px; bottom: -105px; font-size: 330px; font-weight: 700; color: rgba(13,13,13,.08); }
+    .swatch--ink { color: white; background: var(--ink); }
+    .swatch--deep { color: white; background: var(--deep); }
+    .swatch--off { background: var(--off); }
+    .swatch--white { background: white; }
+    .type-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 12px; }
+    .type-card { min-height: 380px; padding: 34px; border: 1px solid var(--line); border-radius: 20px; background: white; }
+    .type-card small { color: var(--deep); font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+    .alphabet { margin: 48px 0 35px; font-size: clamp(58px, 7vw, 92px); font-weight: 700; letter-spacing: -.08em; }
+    .weights { display: grid; gap: 15px; color: var(--muted); font-size: 14px; }
+    .weights span:nth-child(2) { color: var(--ink); font-weight: 600; }
+    .weights span:nth-child(3) { color: var(--ink); font-weight: 800; }
+    .display-sample { display: flex; flex-direction: column; justify-content: space-between; }
+    .display-sample h3 { margin: 45px 0 40px; font-size: clamp(42px, 6vw, 78px); line-height: 1; letter-spacing: -.065em; }
+    .display-sample p { max-width: 570px; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .system-card { position: relative; min-height: 330px; overflow: hidden; border: 1px solid #292d2a; border-radius: 20px; background: #151816; padding: 28px; }
+    .system-card h3 { position: relative; z-index: 2; font-size: 20px; }
+    .system-card p { position: relative; z-index: 2; max-width: 330px; color: #949a96; font-size: 12px; line-height: 1.7; }
+    .flow-lines { position: absolute; inset: 105px 30px 30px; display: grid; align-content: center; gap: 34px; }
+    .flow-lines i { height: 1px; background: linear-gradient(90deg, #5c625e, var(--green)); transform-origin: right; }
+    .flow-lines i:first-child { transform: rotate(8deg); }
+    .flow-lines i:last-child { transform: rotate(-8deg); }
+    .flow-lines::after { content: "+"; position: absolute; right: 4%; top: 50%; width: 78px; height: 78px; border-radius: 24px; background: var(--green); color: var(--ink); display: grid; place-items: center; font-size: 58px; transform: translateY(-50%); box-shadow: 0 0 35px rgba(0,224,90,.25); }
+    .radius-demo { position: absolute; right: -40px; bottom: -50px; width: 290px; height: 250px; border: 1px solid rgba(0,224,90,.45); border-radius: 55px 0 0 0; box-shadow: -35px -35px 0 rgba(0,224,90,.05), -70px -70px 0 rgba(0,224,90,.03); }
+    .ui-row { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; margin-top: 42px; }
+    .button { display: inline-flex; gap: 13px; align-items: center; padding: 16px 20px; border: 0; border-radius: 10px; color: white; background: var(--ink); font-size: 13px; font-weight: 600; }
+    .button span { color: var(--green); font-size: 18px; }
+    .button--green { color: var(--ink); background: var(--green); }
+    .button--green span { color: var(--ink); }
+    .chip { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: white; font-size: 10px; font-weight: 600; }
+    .asset-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .asset-card { grid-column: span 6; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: white; }
+    .asset-card--wide { grid-column: span 12; }
+    .asset-card--dark { background: var(--ink); border-color: #292d2a; }
+    .asset-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .asset-card--square img { aspect-ratio: 1; }
+    .asset-card figcaption { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; border-top: 1px solid var(--line); font-size: 11px; }
+    .asset-card--dark figcaption { color: white; border-color: #292d2a; }
+    .asset-card figcaption span { color: var(--muted); text-align: right; }
+    .asset-card--dark figcaption span { color: #9ba09c; }
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .voice-card { min-height: 235px; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: white; }
+    .voice-card span { color: var(--green); font-size: 34px; }
+    .voice-card h3 { margin: 32px 0 13px; font-size: 19px; }
+    .voice-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .donts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .dont { padding: 24px; border: 1px solid var(--line); border-radius: 17px; background: #ecefec; }
+    .dont b { display: block; margin-bottom: 9px; color: #8b3535; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+    .dont p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    footer { padding-block: 60px; color: white; background: #062719; }
+    .footer-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 45px; }
+    footer .logo-lines i::before { background: #062719; }
+    footer p { margin: 0; color: #91a49a; font-size: 11px; }
+    footer small { color: #6e887b; font-size: 9px; }
+    @media (max-width: 850px) {
+      .nav { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-block: 80px; }
+      .hero-mark { max-width: 480px; width: 100%; }
+      .section-head, .type-grid { grid-template-columns: 1fr; }
+      .section-head { gap: 22px; }
+      .logo-stage { grid-template-columns: 1fr; }
+      .logo-side { grid-template-columns: 1fr 1fr; grid-template-rows: 150px; }
+      .rules, .voice-grid { grid-template-columns: 1fr; }
+      .asset-card { grid-column: span 12; }
+      .palette { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 170px); }
+      .swatch--green { grid-row: span 2; }
+    }
+    @media (max-width: 600px) {
+      .shell { width: min(var(--max), calc(100% - 28px)); }
+      .topbar { height: 60px; border-radius: 14px; }
+      h1 { font-size: 48px; }
+      section { padding-block: 74px; }
+      .meta { flex-direction: column; gap: 12px; }
+      .logo-stage { min-height: 480px; }
+      .logo-main .logo { transform: scale(.82); }
+      .logo-side .logo-lines { transform: scale(1.5); }
+      .palette, .system-grid, .donts { grid-template-columns: 1fr; }
+      .palette { grid-template-rows: repeat(5, 160px); }
+      .swatch--green { grid-row: auto; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media print {
+      .topbar { position: static; box-shadow: none; }
+      .hero { min-height: 0; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar shell">
+    <a class="logo" href="#inicio" aria-label="ATM+ — início"><span class="logo-lines" aria-hidden="true"><i></i><i></i><i></i></span><strong>atm</strong><em>+</em></a>
+    <nav class="nav" aria-label="Seções do guia"><a href="#marca">Marca</a><a href="#cores">Cores</a><a href="#tipografia">Tipografia</a><a href="#sistema">Sistema visual</a><a href="#acervo">Acervo</a><a href="#voz">Voz</a></nav>
+  </header>
+
+  <main id="inicio">
+    <div class="hero shell">
+      <div>
+        <div class="eyebrow">Guia de identidade visual</div>
+        <h1>Tecnologia que <span>conecta</span> e transforma.</h1>
+        <p class="lead">A identidade ATM+ traduz automação, inteligência e movimento em um sistema visual direto, preciso e humano. Este documento reúne os fundamentos para manter a marca consistente.</p>
+        <div class="meta"><span><i></i> Versão 1.0</span><span><i></i> Agosto 2026</span><span><i></i> Uso digital</span></div>
+      </div>
+      <div class="hero-mark" aria-label="Símbolo de adição ATM+"><div class="plus">+</div></div>
+    </div>
+
+    <section class="dark" id="marca">
+      <div class="shell">
+        <div class="section-head"><div><span class="section-label">01 — Marca</span><h2>Conexão,<br><span>movimento</span> e ganho.</h2></div><p>As linhas representam fluxos e integrações. Os nós sugerem pontos de contato. O “+” materializa o resultado e dá sentido ao nome: ATM+ também é “Automatize Mais”.</p></div>
+        <div class="logo-stage">
+          <div class="logo-main"><div class="logo"><span class="logo-lines" aria-hidden="true"><i></i><i></i><i></i></span><strong>atm</strong><em>+</em></div></div>
+          <div class="logo-side"><div><span class="logo-lines" aria-hidden="true"><i></i><i></i><i></i></span></div><div><div class="logo"><strong>atm</strong><em>+</em></div></div></div>
+        </div>
+        <div class="rules">
+          <article class="rule"><b>ÁREA DE PROTEÇÃO</b><p>Reserve ao redor da marca, no mínimo, a largura do sinal “+”. Nenhum texto ou elemento deve invadir essa área.</p></article>
+          <article class="rule"><b>CONTRASTE</b><p>Use a versão clara sobre fundos escuros e a versão principal sobre fundos claros. O verde deve permanecer vibrante.</p></article>
+          <article class="rule"><b>INTEGRIDADE</b><p>Não altere proporções, espaçamentos, inclinação das linhas, cores internas ou relação entre símbolo e nome.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cores">
+      <div class="shell">
+        <div class="section-head"><div><span class="section-label">02 — Cores</span><h2>Energia em <span>verde.</span><br>Clareza no contraste.</h2></div><p>O verde elétrico sinaliza ação, conexão e resultado. Preto e verde profundo trazem solidez; os neutros deixam o sistema respirar.</p></div>
+        <div class="palette">
+          <article class="swatch swatch--green"><strong>Verde ATM+</strong><code>#00E05A · RGB 0 224 90</code></article>
+          <article class="swatch swatch--ink"><strong>Preto</strong><code>#0D0D0D · RGB 13 13 13</code></article>
+          <article class="swatch swatch--deep"><strong>Verde profundo</strong><code>#004D2B · RGB 0 77 43</code></article>
+          <article class="swatch swatch--off"><strong>Off-white</strong><code>#F6F6F6 · RGB 246 246 246</code></article>
+          <article class="swatch swatch--white"><strong>Branco</strong><code>#FFFFFF · RGB 255 255 255</code></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tipografia">
+      <div class="shell">
+        <div class="section-head"><div><span class="section-label">03 — Tipografia</span><h2>Uma voz visual<br><span>clara e precisa.</span></h2></div><p>Sora é a família principal. Geométrica e contemporânea, funciona em grandes mensagens e em interfaces, sempre com boa legibilidade.</p></div>
+        <div class="type-grid">
+          <article class="type-card"><small>FAMÍLIA PRINCIPAL — SORA</small><div class="alphabet">Aa</div><div class="weights"><span>Regular 400 — Informação e texto</span><span>Semibold 600 — Navegação e ação</span><span>ExtraBold 800 — Marca e impacto</span></div></article>
+          <article class="type-card display-sample"><small>EXEMPLO DE COMPOSIÇÃO</small><h3>Automação para<br><span>vender mais.</span></h3><p>Títulos usam entrelinha compacta e tracking negativo. Textos de apoio têm ritmo aberto, linguagem simples e comprimento de linha controlado.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="sistema">
+      <div class="shell">
+        <div class="section-head"><div><span class="section-label">04 — Sistema visual</span><h2>Fluxos que<br><span>convergem.</span></h2></div><p>A linguagem gráfica nasce da ideia de múltiplos processos conectados a um núcleo inteligente — e convertidos em ganho operacional.</p></div>
+        <div class="system-grid">
+          <article class="system-card"><h3>Linhas e nós</h3><p>Conectores finos mostram origem, percurso e destino. Use com moderação e propósito.</p><div class="flow-lines" aria-hidden="true"><i></i><i></i><i></i></div></article>
+          <article class="system-card"><h3>Geometria amigável</h3><p>Cantos arredondados equilibram a precisão técnica com proximidade e acessibilidade.</p><div class="radius-demo" aria-hidden="true"></div></article>
+        </div>
+        <div class="ui-row"><button class="button">Agendar uma reunião <span>↗</span></button><button class="button button--green">Ver soluções <span>↗</span></button><span class="chip">ATENDIMENTO COM IA</span><span class="chip">AUTOMAÇÃO</span><span class="chip">DADOS</span></div>
+      </div>
+    </section>
+
+    <section id="acervo">
+      <div class="shell">
+        <div class="section-head"><div><span class="section-label">05 — Acervo visual</span><h2>Elementos prontos<br>para <span>aplicação.</span></h2></div><p>Este acervo registra as composições fornecidas para a marca. Use os arquivos como referência de proporção, ritmo, direção e comportamento dos fluxos.</p></div>
+        <div class="asset-grid">
+          <figure class="asset-card"><img src="public/identidade/logo-horizontal.png" alt="Logotipo horizontal ATM+ com símbolo de três fluxos"><figcaption><strong>Logotipo horizontal</strong><span>Versão principal com símbolo</span></figcaption></figure>
+          <figure class="asset-card"><img src="public/identidade/logo-assinatura.png" alt="Assinatura ATM+ com a expressão Automatize Mais"><figcaption><strong>Assinatura institucional</strong><span>ATM+ · Automatize Mais</span></figcaption></figure>
+          <figure class="asset-card asset-card--square"><img src="public/identidade/simbolo-convergencia.png" alt="Símbolo ATM+ com três linhas convergindo para um sinal de adição"><figcaption><strong>Símbolo de convergência</strong><span>Fluxos + resultado</span></figcaption></figure>
+          <figure class="asset-card asset-card--dark"><img src="public/identidade/aplicacao-dark.png" alt="Fluxos ATM+ luminosos sobre fundo preto"><figcaption><strong>Aplicação escura</strong><span>Luz, profundidade e tecnologia</span></figcaption></figure>
+          <figure class="asset-card"><img src="public/identidade/fluxo-organico-a.png" alt="Três fluxos orgânicos convergindo para um sinal de adição"><figcaption><strong>Convergência orgânica</strong><span>Linhas contínuas</span></figcaption></figure>
+          <figure class="asset-card"><img src="public/identidade/fluxo-organico-b.png" alt="Variação dos três fluxos orgânicos convergindo para um sinal de adição"><figcaption><strong>Convergência orgânica · variação</strong><span>Arquivo alternativo</span></figcaption></figure>
+          <figure class="asset-card"><img src="public/identidade/fluxo-pontilhado.png" alt="Três fluxos convergindo e seguindo pontilhados até o sinal de adição"><figcaption><strong>Convergência progressiva</strong><span>Linha para pontos</span></figcaption></figure>
+          <figure class="asset-card asset-card--wide"><img src="public/identidade/fluxo-hibrido.png" alt="Fluxos lineares, pontos e gradiente direcionados ao sinal de adição"><figcaption><strong>Fluxo híbrido</strong><span>Integração, processamento e entrega</span></figcaption></figure>
+          <figure class="asset-card asset-card--wide"><img src="public/identidade/sistema-particulas.png" alt="Partículas e arcos convergindo em sinais de adição"><figcaption><strong>Sistema de partículas</strong><span>Dados dispersos se tornam inteligência</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="voz">
+      <div class="shell">
+        <div class="section-head"><div><span class="section-label">06 — Voz da marca</span><h2>Direta, inteligente<br>e <span>orientada a resultado.</span></h2></div><p>A ATM+ explica tecnologia sem complicar. A conversa começa no problema real da operação e termina no impacto que a solução gera.</p></div>
+        <div class="voice-grid">
+          <article class="voice-card"><span>01</span><h3>Clara</h3><p>Frases curtas, benefícios concretos e pouco jargão. Se um termo técnico não ajuda a decisão, ele não entra.</p></article>
+          <article class="voice-card"><span>02</span><h3>Pragmática</h3><p>Falamos de gargalos, tempo, conversão e escala. Tecnologia aparece como meio, nunca como espetáculo.</p></article>
+          <article class="voice-card"><span>03</span><h3>Confiante</h3><p>Tom seguro e próximo, sem exageros. Preferimos demonstrar impacto com evidências e exemplos reais.</p></article>
+        </div>
+        <div class="donts">
+          <article class="dont"><b>Evitar</b><p>Promessas absolutas, futurismo genérico, excesso de termos em inglês e mensagens que colocam a tecnologia acima do negócio.</p></article>
+          <article class="dont"><b>Preferir</b><p>“Identificamos o gargalo, conectamos os processos e construímos uma solução que evolui com a operação.”</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner shell"><div class="logo"><span class="logo-lines" aria-hidden="true"><i></i><i></i><i></i></span><strong>atm</strong><em>+</em></div><p>Automação e IA para operações que querem crescer.</p><small>Identidade visual · versão 1.0 · 2026</small></div></footer>
+</body>
+</html>
