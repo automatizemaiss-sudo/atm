@@ -28,7 +28,7 @@ function Hero() {
     <main id="inicio" className="hero section-shell">
       <div className="hero-copy">
         <div className="eyebrow"><span /> Tecnologia aplicada à operação</div>
-        <h1>Automação e IA para<br /><mark>vender mais</mark>, atender melhor<br />e escalar sua operação.</h1>
+        <h1>Automação e IA para<br /><mark>vender mais</mark>, atender melhor<br /> e escalar sua operação.</h1>
         <p>Identificamos gargalos e construímos soluções sob medida para comercial, atendimento e operação.</p>
         <a className="button button--hero" href="#agendamento">Agendar uma reunião <Arrow /></a>
       </div>
@@ -97,9 +97,9 @@ function WeburnCase() {
 }
 
 const cases = [
-  { logo: "/voltz.png", name: "Voltz", title: "IA para suporte e comercial", text: "Inteligência artificial no atendimento de clientes e oportunidades comerciais." },
-  { logo: "/thiago-sampaio-logo.png", name: "Thiago Sampaio Nutrição", title: "IA aplicada ao atendimento e vendas", text: "Automação de conversas, atendimento e processos comerciais." },
-  { logo: "/pod-ser-facil.png", name: "Pod Ser + Fácil", title: "Automação aplicada à produção de conteúdo", text: "Processos automatizados para produzir e distribuir conteúdo." },
+  { logo: "/voltz.png", company: "Voltz Club", title: "IA para suporte e comercial", text: "Automação de atendimento e oportunidades comerciais para e-commerce.", type: "E-commerce" },
+  { logo: "/thiago-sampaio-case.png", company: "Alive Nutrição", title: "IA aplicada ao atendimento e vendas", text: "Automação de conversas, atendimento e processos comerciais.", profile: "@thiagosampaionutricao", followers: "1,2 mi seguidores" },
+  { logo: "/pod-ser-facil.png", company: "Pod Ser Mais Fácil", title: "Automação aplicada à produção de conteúdo", text: "Processos automatizados para produzir e distribuir conteúdo." },
 ];
 
 function Cases() {
@@ -107,7 +107,17 @@ function Cases() {
     <section className="cases section-shell">
       <div className="section-heading"><div><span className="kicker">NA PRÁTICA</span><h2>Soluções diferentes.<br /><mark>Impacto real.</mark></h2></div><p>Cada operação tem um gargalo. Cada solução é desenhada a partir dele.</p></div>
       <div className="case-grid">
-        {cases.map((item, index) => <article className="case-card" key={item.name}><div className={`case-logo case-logo--${index}`}><Image src={item.logo} alt={item.name} width={180} height={180} /></div><div className="case-content"><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
+        {cases.map((item, index) => (
+          <article className="case-card" key={item.company}>
+            <div className={`case-logo case-logo--${index} ${index === 1 ? "case-logo--person" : ""}`}><Image src={item.logo} alt={item.company} width={180} height={180} /></div>
+            <div className="case-content">
+              <span>0{index + 1}</span><strong className="case-company">{item.company}</strong>
+              {item.type && <small className="case-type">{item.type}</small>}
+              {item.profile && <div className="case-profile"><span>{item.profile}</span><b aria-label="Perfil verificado">✓</b><small>{item.followers}</small></div>}
+              <h3>{item.title}</h3><p>{item.text}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
