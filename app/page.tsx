@@ -98,7 +98,7 @@ function WeburnCase() {
 
 const cases = [
   { logo: "/voltz.png", company: "Voltz Club", title: "IA para suporte e comercial", text: "Automação de atendimento e oportunidades comerciais para e-commerce.", type: "E-commerce" },
-  { logo: "/thiago-sampaio-case.png", company: "Alive Nutrição", title: "IA aplicada ao atendimento e vendas", text: "Automação de conversas, atendimento e processos comerciais.", profile: "@thiagosampaionutricao", followers: "1,2 mi seguidores" },
+  { logo: "/thiago-sampaio-case.png", brandLogo: "/thiago-sampaio-logo.png", company: "Alive Nutrição", title: "IA aplicada ao atendimento e vendas", text: "Automação de conversas, atendimento e processos comerciais.", profile: "@thiagosampaionutricao", followers: "1,2 mi seguidores" },
   { logo: "/pod-ser-facil.png", company: "Pod Ser Mais Fácil", title: "Automação aplicada à produção de conteúdo", text: "Processos automatizados para produzir e distribuir conteúdo." },
 ];
 
@@ -109,7 +109,9 @@ function Cases() {
       <div className="case-grid">
         {cases.map((item, index) => (
           <article className="case-card" key={item.company}>
-            <div className={`case-logo case-logo--${index} ${index === 1 ? "case-logo--person" : ""}`}><Image src={item.logo} alt={item.company} width={180} height={180} /></div>
+            <div className={`case-logo case-logo--${index} ${item.brandLogo ? "case-logo--person" : ""}`}>
+              {item.brandLogo ? <div className="case-person-pair"><Image className="case-person-photo" src={item.logo} alt="Thiago Sampaio" width={180} height={180} /><span className="case-brand-mark"><Image src={item.brandLogo} alt="Logo Alive Nutrição" width={110} height={110} /></span></div> : <Image src={item.logo} alt={item.company} width={180} height={180} />}
+            </div>
             <div className="case-content">
               <span>0{index + 1}</span><strong className="case-company">{item.company}</strong>
               {item.type && <small className="case-type">{item.type}</small>}
