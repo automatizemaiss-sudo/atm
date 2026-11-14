@@ -1,0 +1,14 @@
+{
+  "action": "add",
+  "enabled": true,
+  "url": "https://SEU-N8N/webhook/uazapi-atendimento-8267b754a84649fd867d42d3a7cc23dd",
+  "events": [
+    "messages"
+  ],
+  "excludeMessages": [
+    "wasSentByApi",
+    "isGroupYes"
+  ],
+  "addUrlEvents": false,
+  "addUrlTypesMessages": false
+}
