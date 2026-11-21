@@ -23,3 +23,47 @@
 
 /* Case identities */
 .case-content{display:flex;flex-direction:column;align-items:flex-start}.case-company{font-size:18px;margin-top:13px;letter-spacing:-.025em}.case-type{margin-top:6px;color:var(--deep);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.case-profile{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:7px}.case-profile>span{font-size:11px;color:#454945}.case-profile b{width:15px;height:15px;display:grid;place-items:center;border-radius:50%;background:#168de2;color:white;font-size:10px}.case-profile small{width:100%;font-size:10px;color:#777}.case-content h3{margin-top:22px}.case-logo--person{background:#edf1ee}.case-person-pair{display:flex;align-items:center;justify-content:center;gap:24px}.case-person-pair .case-person-photo{width:142px;height:142px;border-radius:50%;object-fit:cover}.case-brand-mark{width:94px;height:94px;display:grid;place-items:center;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,77,43,.12)}.case-brand-mark img{width:100%;height:100%;object-fit:cover}.case-logo--1.case-logo--person{background:#edf1ee}@media(max-width:640px){.case-person-pair{gap:18px}.case-person-pair .case-person-photo{width:126px;height:126px}.case-brand-mark{width:82px;height:82px;border-radius:17px}}
+
+.legal-page {
+  max-width: 780px;
+  padding-block: clamp(44px, 8vw, 96px);
+  color: var(--graphite);
+  font-size: 1rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.legal-page__heading {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+  margin-bottom: 34px;
+}
+.legal-page h1 {
+  margin-bottom: 12px;
+  color: var(--black);
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: -.05em;
+}
+.legal-page__heading p { margin: 0; font-size: .875rem; }
+.legal-page section + section { margin-top: 32px; }
+.legal-page h2 {
+  margin-bottom: 12px;
+  color: var(--black);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  line-height: 1.3;
+}
+.legal-page :is(ul, ol) { padding-inline-start: 1.5rem; }
+.legal-page li + li { margin-top: .5rem; }
+.legal-page a { color: var(--deep); text-decoration: underline; text-underline-offset: .18em; }
+.legal-links {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: .875rem;
+}
+.legal-links a { padding-block: 6px; }
+.legal-links a:hover,
+.legal-links a[aria-current="page"] { color: var(--green); text-decoration: underline; }
+.legal-links a:focus-visible,
+.legal-page a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
