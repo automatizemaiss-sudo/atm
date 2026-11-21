@@ -1,91 +1,48 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
+const output = new URL("../.next/server/app/", import.meta.url);
+const legalPages = [
+  ["privacidade", "Política de Privacidade"],
+  ["termos", "Termos de Uso"],
+  ["exclusao-de-dados", "Exclusão de Dados"],
+];
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+function readPage(slug) {
+  return readFile(new URL(`${slug}.html`, output), "utf8");
 }
 
-test("server-renders the starter loading skeleton", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+test("renders the landing page with its booking CTA and legal footer links", async () => {
+  const html = await readPage("index");
+  assert.match(html, /<title>ATM\+ \| Automação e IA para sua operação<\/title>/);
+  assert.match(html, /<button[^>]*>Ver horários disponíveis/);
+  assert.doesNotMatch(html, /<iframe\b/);
 
-  const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  const footer = html.match(/<footer>(.*?)<\/footer>/s)?.[1] ?? "";
+  for (const [slug, title] of legalPages) {
+    assert.ok(footer.includes(`href="/${slug}">${title}</a>`), title);
+  }
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
-  ]);
+for (const [slug, title] of legalPages) {
+  test(`prerenders /${slug} with its own SEO metadata and return navigation`, async () => {
+    const html = await readPage(slug);
+    const head = html.match(/<head>(.*?)<\/head>/s)?.[1] ?? "";
+    assert.ok(head.includes(`<title>${title} | Automatize Mais</title>`));
+    assert.ok(head.includes(`rel="canonical" href="https://automatizemais.com/${slug}"`));
+    assert.match(head, /<meta name="description" content="[^"]+"/);
+    assert.doesNotMatch(head, /<meta[^>]+name="(?:robots|googlebot)"[^>]+noindex/i);
+    assert.ok(html.includes(`<h1>${title}</h1>`));
+    assert.match(html, /href="\/">Voltar ao início<\/a>/);
+    assert.match(html, /62775207 MATHEUS MIGUEL RODRIGUES DONHA/);
+    assert.match(html, /62\.775\.207\/0001-95/);
+  });
+}
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
-
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
-
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
-
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+test("renders email instructions for deletion requests", async () => {
+  const html = await readPage("exclusao-de-dados");
+  const subject = encodeURIComponent("Solicitação de exclusão de dados");
+  assert.ok(html.includes(`href="mailto:automatizemaiss@gmail.com?subject=${subject}"`));
+  assert.doesNotMatch(html, /<form\b/);
 });

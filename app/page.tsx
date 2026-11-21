@@ -1,14 +1,7 @@
 import Image from "next/image";
+import { Brand } from "./Brand";
+import { LegalLinks } from "./LegalPage";
 import { BookingButton, BookingModal } from "./BookingModal";
-
-function Brand({ light = false }: { light?: boolean }) {
-  return (
-    <span className={`brand ${light ? "brand--light" : ""}`} aria-label="ATM+">
-      <span className="brand-lines" aria-hidden="true"><i /><i /><i /></span>
-      <b>atm</b><em>+</em>
-    </span>
-  );
-}
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
@@ -186,7 +179,15 @@ function Booking() {
 }
 
 function Footer() {
-  return <footer><Brand light /><p>Automação e IA para operações que querem crescer.</p><a href="#inicio">Voltar ao topo ↑</a><small>© 2026 ATM+. Todos os direitos reservados.</small></footer>;
+  return (
+    <footer>
+      <Brand light />
+      <p>Automação e IA para operações que querem crescer.</p>
+      <a href="#inicio">Voltar ao topo ↑</a>
+      <LegalLinks />
+      <small>© 2026 ATM+. Todos os direitos reservados.</small>
+    </footer>
+  );
 }
 
 export default function Home() {
