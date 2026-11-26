@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CaseCarousel } from "./CaseCarousel";
 import { Brand } from "./Brand";
 import { LegalLinks } from "./LegalPage";
 import { BookingButton, BookingModal } from "./BookingModal";
@@ -29,11 +30,11 @@ function Hero() {
   );
 }
 
-const logos: { src: string; alt: string; cls: string; width?: number; height?: number }[] = [
-  { src: "/weburn.png", alt: "Weburn", cls: "logo-weburn" },
-  { src: "/voltz.png", alt: "Voltz Club", cls: "logo-square" },
-  { src: "/thiago-sampaio-logo.png", alt: "Thiago Sampaio Nutrição", cls: "logo-square" },
-  { src: "/pod-ser-facil.png", alt: "Pod Ser + Fácil", cls: "logo-square" },
+const logos: { src: string; alt: string; cls: string; width: number; height: number }[] = [
+  { src: "/weburn.png", alt: "Weburn", cls: "logo-weburn", width: 700, height: 300 },
+  { src: "/voltz.png", alt: "Voltz Club", cls: "logo-voltz", width: 400, height: 400 },
+  { src: "/thiago-sampaio-logo.png", alt: "Alive Nutrição", cls: "logo-alive", width: 400, height: 400 },
+  { src: "/pod-ser-facil.png", alt: "Pod Ser + Fácil", cls: "logo-pod", width: 300, height: 300 },
   { src: "/daterra.png", alt: "Imobiliária Daterra", cls: "logo-daterra", width: 579, height: 228 },
   { src: "/solenne-imoveis.png", alt: "Solenne Imóveis", cls: "logo-solenne", width: 490, height: 560 },
 ];
@@ -43,7 +44,7 @@ function LogoCloud() {
     <section className="logo-section section-shell" aria-labelledby="logo-title">
       <p id="logo-title">Soluções implementadas em operações reais.</p>
       <div className="logo-cloud">
-        {logos.map(({ src, alt, cls, width = 220, height = 100 }) => (
+        {logos.map(({ src, alt, cls, width, height }) => (
           <div className={`client-logo ${cls}`} key={src}>
             <Image src={src} alt={alt} width={width} height={height} />
           </div>
@@ -99,13 +100,15 @@ const cases = [
   { logo: "/voltz.png", company: "Voltz Club", title: "IA para suporte e comercial", text: "Automação de atendimento e oportunidades comerciais para e-commerce.", type: "E-commerce" },
   { logo: "/thiago-sampaio-case.png", brandLogo: "/thiago-sampaio-logo.png", company: "Alive Nutrição", title: "IA aplicada ao atendimento e vendas", text: "Automação de conversas, atendimento e processos comerciais.", profile: "@thiagosampaionutricao", followers: "1,2 mi seguidores" },
   { logo: "/pod-ser-facil.png", company: "Pod Ser Mais Fácil", title: "Automação aplicada à produção de conteúdo", text: "Processos automatizados para produzir e distribuir conteúdo." },
+  { logo: "/daterra.png", company: "Imobiliária Daterra", title: "Imobiliária atendida pela ATM+", type: "Mercado imobiliário" },
+  { logo: "/solenne-imoveis.png", company: "Solenne Imóveis", title: "Imobiliária atendida pela ATM+", type: "Mercado imobiliário" },
 ];
 
 function Cases() {
   return (
     <section className="cases section-shell">
       <div className="section-heading"><div><span className="kicker">NA PRÁTICA</span><h2>Soluções diferentes.<br /><mark>Impacto real.</mark></h2></div><p>Cada operação tem um gargalo. Cada solução é desenhada a partir dele.</p></div>
-      <div className="case-grid">
+      <CaseCarousel>
         {cases.map((item, index) => (
           <article className="case-card" key={item.company}>
             <div className={`case-logo case-logo--${index} ${item.brandLogo ? "case-logo--person" : ""}`}>
@@ -115,11 +118,11 @@ function Cases() {
               <span>0{index + 1}</span><strong className="case-company">{item.company}</strong>
               {item.type && <small className="case-type">{item.type}</small>}
               {item.profile && <div className="case-profile"><span>{item.profile}</span><b aria-label="Perfil verificado">✓</b><small>{item.followers}</small></div>}
-              <h3>{item.title}</h3><p>{item.text}</p>
+              <h3>{item.title}</h3>{item.text && <p>{item.text}</p>}
             </div>
           </article>
         ))}
-      </div>
+      </CaseCarousel>
     </section>
   );
 }
