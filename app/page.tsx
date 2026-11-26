@@ -36,11 +36,13 @@ function Hero() {
   );
 }
 
-const logos = [
+const logos: { src: string; alt: string; cls: string; width?: number; height?: number }[] = [
   { src: "/weburn.png", alt: "Weburn", cls: "logo-weburn" },
   { src: "/voltz.png", alt: "Voltz Club", cls: "logo-square" },
   { src: "/thiago-sampaio-logo.png", alt: "Thiago Sampaio Nutrição", cls: "logo-square" },
   { src: "/pod-ser-facil.png", alt: "Pod Ser + Fácil", cls: "logo-square" },
+  { src: "/daterra.png", alt: "Imobiliária Daterra", cls: "logo-daterra", width: 579, height: 228 },
+  { src: "/solenne-imoveis.png", alt: "Solenne Imóveis", cls: "logo-solenne", width: 490, height: 560 },
 ];
 
 function LogoCloud() {
@@ -48,7 +50,11 @@ function LogoCloud() {
     <section className="logo-section section-shell" aria-labelledby="logo-title">
       <p id="logo-title">Soluções implementadas em operações reais.</p>
       <div className="logo-cloud">
-        {logos.map((logo) => <div className={`client-logo ${logo.cls}`} key={logo.alt}><Image src={logo.src} alt={logo.alt} width={220} height={100} /></div>)}
+        {logos.map(({ src, alt, cls, width = 220, height = 100 }) => (
+          <div className={`client-logo ${cls}`} key={src}>
+            <Image src={src} alt={alt} width={width} height={height} />
+          </div>
+        ))}
       </div>
     </section>
   );
